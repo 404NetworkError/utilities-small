@@ -1,0 +1,4 @@
+# Automatically connect to existing tmux session on login; otherwise create one
+if [ "$TMUX" == "" ]; then
+    (tmux ls | grep -vq attached && tmux at -t `tmux ls | grep -vm1 attached | cut -d: -f1`) || tmux && exit;
+fi

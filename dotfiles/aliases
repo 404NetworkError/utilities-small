@@ -1,0 +1,11 @@
+alias l='ls -CF --color=auto'
+alias ll='ls -a --color=auto'
+alias ll='ls -l --color=auto'
+alias l.='ls -d .* --color=auto'
+alias ls='ls --color=auto'
+alias lla="ls -al --color=auto"
+alias sl="ls"
+alias aria2c="aria2c -x 8 -c --file-allocation=none"
+alias aria2="aria2c -x 8 -c --file-allocation=none"
+alias aria="aria2c -x 8 -c --file-allocation=none"
+alias cd..="cd .."

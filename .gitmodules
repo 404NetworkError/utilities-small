@@ -1,0 +1,31 @@
+[submodule "tools/executor"]
+	path = tools/executor
+	url = https://github.com/jdbivens42/Tools.git
+[submodule "tools/peda"]
+	path = tools/peda
+	url = https://github.com/longld/peda.git
+[submodule "tools/AutoBlue-MS17-010"]
+	path = tools/AutoBlue-MS17-010
+	url = https://github.com/3ndG4me/AutoBlue-MS17-010.git
+[submodule "tools/progress"]
+	path = tools/progress
+	url = https://github.com/Xfennec/progress.git
+[submodule "tools/lscript"]
+	path = tools/lscript
+	url = https://github.com/arismelachroinos/lscript.git
+[submodule "tools/old-lscript"]
+	path = tools/old-lscript
+	url = https://github.com/404NetworkError/lscript.git
+[submodule "tools/ssh-audit"]
+	path = tools/ssh-audit
+	url = https://github.com/jtesta/ssh-audit.git
+	branch = all_my_patches
+[submodule "tools/httpscreenshot"]
+	path = tools/httpscreenshot
+	url = https://github.com/breenmachine/httpscreenshot.git
+[submodule "tools/pyfiscan"]
+	path = tools/pyfiscan
+	url = https://github.com/fgeek/pyfiscan.git
+[submodule "tools/Probable-Wordlists"]
+	path = tools/Probable-Wordlists
+	url = https://github.com/berzerk0/Probable-Wordlists.git

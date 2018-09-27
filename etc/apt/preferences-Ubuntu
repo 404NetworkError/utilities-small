@@ -1,0 +1,33 @@
+Package: openssh*
+Pin: release a=cosmic
+Pin-Priority: 990
+
+Package: openssl*
+Pin: release a=cosmic
+Pin-Priority: 990
+
+Package: tmux*
+Pin: release a=cosmic
+Pin-Priority: 990
+
+Package: git*
+Pin: release a=cosmic
+Pin-Priority: 990
+
+Package: nmap*
+Pin: release a=cosmic
+Pin-Priority: 990
+
+Package: wireshark*
+Pin: release a=cosmic
+Pin-Priority: 990
+
+Explanation: Uninstall or do not install any Debian-originated
+Explanation: package versions other than those in the stretch release
+Package: *
+Pin: release n=bionic
+Pin-Priority: 900
+
+Package: *
+Pin: release o=Ubuntu
+Pin-Priority: -10
