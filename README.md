@@ -1,4 +1,4 @@
 ## For just this repo
-`git clone https://github.com/404NetworkError/utilities.git`
+`git clone https://github.com/404NetworkError/utilities-small.git`
 ## For all submodules
-`git clone --recursive https://github.com/404NetworkError/utilities.git`
+`git clone --recursive https://github.com/404NetworkError/utilities-small.git`
