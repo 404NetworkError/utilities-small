@@ -202,17 +202,15 @@ fi
 
 
 
-# All python2 packages
-echo -e "${PURPLE}--  INFO: Installing Pip for Python 2 in the background  --${NC}"
-screen -dmS p2 bash -c "python2 -m pip install --upgrade pip setuptools wheel; python2 -m pip install --upgrade pwntools"
-
-
-
+# Background tasks
 echo -e "${PURPLE}--  INFO: Starting PostgreSQL & Metasploit Database in the background  --${NC}"
 screen -dmS msf bash -c "echo 'PostgreSQL starting...'; sudo systemctl start postgresql; echo 'Finished'; msfconsole -x 'msfdb init; db_connect -y /usr/share/metasploit-framework/config/database.yml; db_rebuild_cache; exit' 2>&1"
 
 echo -e "${PURPLE}--  INFO: Updating searchsploit in the background  --${NC}"
 screen -dmS ss bash -c "searchsploit -u"
+
+echo -e "${PURPLE}--  INFO: Installing Pip for Python 2 in the background  --${NC}"
+screen -dmS p2 bash -c "python2 -m pip install --upgrade pip setuptools wheel; python2 -m pip install --upgrade pwntools"
 
 
 
@@ -277,7 +275,7 @@ cd $ToolsDir
 #IDA Pro (Free 7.0)
 echo -e "${PURPLE}--  INFO: Installing IDA Free 7  --${NC}"
 if [[ "${small}" -eq 1 ]]; then
-    screen -dmS ida bash -c "cd $ToolsDir/${REPO}/bin; curl -#LO https://out7.hex-rays.com/files/idafree70_linux.run; chmod +x idafree70_linux.run; $ToolsDir/${REPO}/bin/idafree70_linux.run; ln -sf /opt/idafree-7.0/ida64 /usr/local/bin; cp ~/Desktop/IDA\ Free.desktop /usr/share/applications/"
+    screen -dmS ida bash -c "cd $ToolsDir/${REPO}/bin; curl -#LO https://out7.hex-rays.com/files/idafree70_linux.run; chmod +x idafree70_linux.run; $ToolsDir/${REPO}/bin/idafree70_linux.run --mode unattended; ln -sf /opt/idafree-7.0/ida64 /usr/local/bin; cp ~/Desktop/IDA\ Free.desktop /usr/share/applications/"
 else
     screen -dmS ida bash -c "$ToolsDir/${REPO}/bin/idafree70_linux.run --mode unattended; ln -sf /opt/idafree-7.0/ida64 /usr/local/bin; cp ~/Desktop/IDA\ Free.desktop /usr/share/applications/"
 fi
