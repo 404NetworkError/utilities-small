@@ -1,0 +1,13 @@
+Package: git*
+Pin: release a=debian-testing
+Pin-Priority: 990
+
+Explanation: Uninstall or do not install any Debian-originated
+Explanation: package versions other than those in the stretch release
+Package: *
+Pin: release n=kali-rolling
+Pin-Priority: 900
+
+Package: *
+Pin: release o=Kali
+Pin-Priority: -10
