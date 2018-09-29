@@ -204,7 +204,7 @@ fi
 
 # Background tasks
 echo -e "${PURPLE}--  INFO: Starting PostgreSQL & Metasploit Database in the background  --${NC}"
-screen -dmS msf bash -c "echo 'PostgreSQL starting...'; sudo systemctl start postgresql; echo 'Finished'; msfconsole -x 'msfdb init; db_connect -y /usr/share/metasploit-framework/config/database.yml; db_rebuild_cache; exit' 2>&1"
+screen -dmS msf bash -c "echo 'PostgreSQL starting...'; sudo systemctl start postgresql; echo 'Finished'; msfdb init; msfconsole -x 'db_connect -y /usr/share/metasploit-framework/config/database.yml; db_rebuild_cache; exit' 2>&1"
 
 echo -e "${PURPLE}--  INFO: Updating searchsploit in the background  --${NC}"
 screen -dmS ss bash -c "searchsploit -u"
