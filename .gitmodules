@@ -15,7 +15,8 @@
 	url = https://github.com/arismelachroinos/lscript.git
 [submodule "tools/old-lscript"]
 	path = tools/old-lscript
-	url = https://github.com/404NetworkError/lscript.git
+    url = https://github.com/404NetworkError/lscript.git
+    branch = main
 [submodule "tools/ssh-audit"]
 	path = tools/ssh-audit
 	url = https://github.com/jtesta/ssh-audit.git
@@ -29,3 +30,24 @@
 [submodule "tools/Probable-Wordlists"]
 	path = tools/Probable-Wordlists
 	url = https://github.com/berzerk0/Probable-Wordlists.git
+[submodule "tools/JAWS"]
+	path = tools/JAWS
+	url = https://github.com/411Hall/JAWS.git
+[submodule "tools/LinEnum"]
+	path = tools/LinEnum
+	url = https://github.com/rebootuser/LinEnum.git
+[submodule "tools/windows-privesc-check"]
+	path = tools/windows-privesc-check
+	url = https://github.com/pentestmonkey/windows-privesc-check.git
+	shallow = true
+[submodule "tools/testssl.sh"]
+	path = tools/testssl.sh
+	url = https://github.com/drwetter/testssl.sh.git
+	shallow = true
+[submodule "tools/win_enum_local"]
+	path = tools/win_enum_local
+	url = https://github.com/sn0wfa11/win_enum_local.git
+[submodule "tools/SecLists"]
+	path = tools/SecLists
+	url = https://github.com/danielmiessler/SecLists.git
+	shallow = true
