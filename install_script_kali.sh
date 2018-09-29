@@ -111,6 +111,8 @@ set -- "${ARGS[@]}" # restore positional parameters
 
 mkdir -p ~/.local/bin
 export PATH=~/.local/bin:$PATH
+cp /etc/apt/sources.list /etc/apt/sources.list~
+sed -i 's|kali-rolling.*|kali-rolling main non-free contrib|g' /etc/apt/sources.list
 
 
 ToolsDir=~/tools
@@ -122,7 +124,7 @@ echo -e "${PURPLE}--  INFO: Updating sytem  --${NC}"
 sudo apt-get update
 sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
 echo -e "${PURPLE}--  INFO: Installing apt-fast  --${NC}"
-sudo apt-get install -y curl aria2 git python3 python3-pip screen
+sudo apt-get install -y curl aria2 git python3 python3-pip screen 
 sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
 #Install apt-fast
 /bin/bash -c "$(curl -sL https://git.io/vokNn)"
@@ -132,6 +134,8 @@ sudo sed -i "s|^#_APTMGR=apt-get|_APTMGR=apt|;s|^#DOWNLOADBEFORE=true|DOWNLOADBE
 
 
 
+# Peace of mind keyboard shortcut
+screen -dmS keycs bash -c "python3 $ToolsDir/${REPO}/bin/set_customshortcut.py 'System Monitor' 'gnome-system-monitor' '<Control><Shift>Escape'"
 echo -e "${PURPLE}--  INFO: Installing CPAN packages in the background  --${NC}"
 screen -dmS CPAN bash -c "yes | cpan install File::Spec File::Path XML::Simple WWW::Mechanize WWW::Mechanize::Plugin::FollowMetaRedirect -y 2>&1"
 echo -e "${PURPLE}--  INFO: Installing Pip for Python 3 in the background  --${NC}"
@@ -154,8 +158,6 @@ chmod -R 400 $ToolsDir/${REPO}/tools/executor/*
 # Symlinks
 screen -dmS symlinks bash -c "ln -sf $ToolsDir/${REPO}/bin ~/.local/; ln -sf $ToolsDir/${REPO}/tools/executor $ToolsDir/; (IFS='
 '; for folder in `ls $ToolsDir/${REPO}/tools/`; do ln -sf $ToolsDir/${REPO}/tools/${folder}/* ~/.local/bin/; done); ln -sf $ToolsDir/${REPO}/tools/SecLists /usr/share/wordlists/; (cd /usr/share/wordlists/; ln -sf SecLists seclists; cd $ToolsDir); ln -sf $ToolsDir/${REPO}/tools/Probable-Wordlists /usr/share/wordlists/; (cd /usr/share/wordlists/; ln -sf Probable-Wordlists probable-wordlists; ln -sf probable-wordlists probable; cd $ToolsDir)"
-# Peace of mind keyboard shortcut
-screen -dmS cs bash -c "python3 $ToolsDir/${REPO}/bin/set_customshortcut.py 'System Monitor' 'gnome-system-monitor' '<Control><Shift>Escape'"
 
 
 
@@ -277,7 +279,7 @@ echo -e "${PURPLE}--  INFO: Installing IDA Free 7  --${NC}"
 if [[ "${small}" -eq 1 ]]; then
     screen -dmS ida bash -c "cd $ToolsDir/${REPO}/bin; curl -#LO https://out7.hex-rays.com/files/idafree70_linux.run; chmod +x idafree70_linux.run; $ToolsDir/${REPO}/bin/idafree70_linux.run; ln -sf /opt/idafree-7.0/ida64 /usr/local/bin; cp ~/Desktop/IDA\ Free.desktop /usr/share/applications/"
 else
-    screen -dmS ida bash -c "$ToolsDir/${REPO}/bin/idafree70_linux.run; ln -sf /opt/idafree-7.0/ida64 /usr/local/bin; cp ~/Desktop/IDA\ Free.desktop /usr/share/applications/"
+    screen -dmS ida bash -c "$ToolsDir/${REPO}/bin/idafree70_linux.run --mode unattended; ln -sf /opt/idafree-7.0/ida64 /usr/local/bin; cp ~/Desktop/IDA\ Free.desktop /usr/share/applications/"
 fi
 
 if [[ "${vas}" -eq 1 ]]; then
