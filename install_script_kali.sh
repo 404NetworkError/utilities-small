@@ -156,7 +156,7 @@ screen -dmS keycs bash -c "python3 $ToolsDir/${REPO}/bin/set_customshortcut.py '
 chmod -R 700 $ToolsDir/${REPO}/tools/executor/*
 chmod -R 400 $ToolsDir/${REPO}/tools/executor/*
 # Symlinks
-screen -dmS symlinks bash -c "ln -sf $ToolsDir/${REPO}/bin ~/.local/; ln -sf $ToolsDir/${REPO}/tools/executor $ToolsDir/; (IFS='
+screen -dmS symlinks bash -c "ln -sf $ToolsDir/${REPO}/bin ~/.local/; ln -sf $ToolsDir/${REPO}/scripts/* ~/.local/bin/; ln -sf $ToolsDir/${REPO}/tools/executor $ToolsDir/; (IFS='
 '; for folder in `ls $ToolsDir/${REPO}/tools/`; do ln -sf $ToolsDir/${REPO}/tools/${folder}/* ~/.local/bin/; done); ln -sf $ToolsDir/${REPO}/tools/SecLists /usr/share/wordlists/; (cd /usr/share/wordlists/; ln -sf SecLists seclists; cd $ToolsDir); ln -sf $ToolsDir/${REPO}/tools/Probable-Wordlists /usr/share/wordlists/; (cd /usr/share/wordlists/; ln -sf Probable-Wordlists probable-wordlists; ln -sf probable-wordlists probable; cd $ToolsDir)"
 
 
