@@ -209,6 +209,9 @@ screen -dmS msf bash -c "echo 'PostgreSQL starting...'; sudo systemctl start pos
 echo -e "${PURPLE}--  INFO: Updating searchsploit in the background  --${NC}"
 screen -dmS ss bash -c "searchsploit -u"
 
+echo -e "${PURPLE}--  INFO: Updating wpscan database in the background  --${NC}"
+screen -dmS ss bash -c "wpscan --update"
+
 echo -e "${PURPLE}--  INFO: Installing Pip for Python 2 in the background  --${NC}"
 screen -dmS p2 bash -c "python2 -m pip install --upgrade pip setuptools wheel; python2 -m pip install --upgrade pwntools"
 
