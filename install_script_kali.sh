@@ -134,8 +134,6 @@ sudo sed -i "s|^#_APTMGR=apt-get|_APTMGR=apt|;s|^#DOWNLOADBEFORE=true|DOWNLOADBE
 
 
 
-# Peace of mind keyboard shortcut
-screen -dmS keycs bash -c "python3 $ToolsDir/${REPO}/bin/set_customshortcut.py 'System Monitor' 'gnome-system-monitor' '<Control><Shift>Escape'"
 echo -e "${PURPLE}--  INFO: Installing CPAN packages in the background  --${NC}"
 screen -dmS CPAN bash -c "yes | cpan install File::Spec File::Path XML::Simple WWW::Mechanize WWW::Mechanize::Plugin::FollowMetaRedirect -y 2>&1"
 echo -e "${PURPLE}--  INFO: Installing Pip for Python 3 in the background  --${NC}"
@@ -152,6 +150,8 @@ else
     REPO=utilities-small
     git clone --recursive https://github.com/404NetworkError/utilities-small.git
 fi
+# Peace of mind keyboard shortcut
+screen -dmS keycs bash -c "python3 $ToolsDir/${REPO}/bin/set_customshortcut.py 'System Monitor' 'gnome-system-monitor' '<Control><Shift>Escape'"
 # Fix executor permissions
 chmod -R 700 $ToolsDir/${REPO}/tools/executor/*
 chmod -R 400 $ToolsDir/${REPO}/tools/executor/*
