@@ -175,8 +175,8 @@ fi
 # Programs to download
 echo -e "${PURPLE}--  INFO: Installing all the programs  --${NC}"
 sudo apt-fast install -y terminator openvas openvpn virtualenv masscan jq lftp ftp htop p7zip-full pigz pbzip2 pixz \
-                         dconf-editor python2 python-pip python2-dev libssl-dev libffi-dev build-essential \
-                         swig swig3.0 libssl-dev python2-dev libjpeg-dev xvfb phantomjs neovim tmux screen \
+                         dconf-editor python2 python-pip python2-dev libssl-dev libffi-dev build-essential openssl \
+                         swig swig3.0 libssl-dev python2-dev libjpeg-dev xvfb phantomjs neovim tmux screen ncurses-dev \
                          libpython3-dev libyaml-dev metasploit-framework exploitdb apt-transport-https
 sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
 if [[ "${light}" -eq 1 ]]; then
@@ -265,9 +265,9 @@ else
 fi
 
 # Web-app vuln & version scanner
-echo -e "${PURPLE}--  INFO: Installing pyfiscan Pip Requirements in the background  --${NC}"
-screen -dmS pyfi bash -c "cd $ToolsDir/${REPO}/tools/pyfiscan; python3 -m pip install -r requirements.lst"
-cd $ToolsDir
+# echo -e "${PURPLE}--  INFO: Installing pyfiscan Pip Requirements in the background  --${NC}"
+# screen -dmS pyfi bash -c "cd $ToolsDir/${REPO}/tools/pyfiscan; python3 -m pip install -r requirements.lst"
+# cd $ToolsDir
 
 
 
@@ -285,6 +285,9 @@ if [[ "${vas}" -eq 1 ]]; then
     screen -dmS vas bash -c "openvas-setup"
 fi
 
+# Setup Lazy script
+screen -dmS lscript bash -c "ln -sf $ToolsDir/${REPO}/tools/lscript /root/; chmod +x install.sh; yes i | /root/lscript/install.sh"
+screen -dmS peda bash -c "echo 'source $ToolsDir/${REPO}/tools/peda/peda.py' >> ~/.gdbinit"
 
 
 if [[ "${distup}" -eq 1 ]]; then
