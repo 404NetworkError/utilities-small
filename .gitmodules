@@ -52,7 +52,8 @@
 	shallow = true
 [submodule "tools/testssl.sh"]
 	path = tools/testssl.sh
-	url = https://github.com/drwetter/testssl.sh.git
+    url = https://github.com/drwetter/testssl.sh.git
+    branch = 2.9dev
 	shallow = true
 [submodule "tools/win_enum_local"]
 	path = tools/win_enum_local
