@@ -1,5 +1,5 @@
 # Install Script
-https://gist.github.com/404NetworkError/0f6ff3a2e343ed85d9db6fb10ee9cd8c
+https://github.com/404NetworkError/utilities-small/blob/master/install_script_kali.sh
 
 ---
 ## Clone just this repo
