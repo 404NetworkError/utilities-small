@@ -1,4 +1,4 @@
-[200~#!/bin/bash
+#!/bin/bash
 
 trap ctrl_c SIGINT
 
