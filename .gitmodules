@@ -20,7 +20,7 @@
 [submodule "tools/old-lscript"]
 	path = tools/old-lscript
     url = https://github.com/404NetworkError/lscript.git
-    branch = main
+    branch = dev
     shallow = true
 [submodule "tools/ssh-audit"]
 	path = tools/ssh-audit
@@ -29,10 +29,6 @@
 [submodule "tools/httpscreenshot"]
 	path = tools/httpscreenshot
 	url = https://github.com/breenmachine/httpscreenshot.git
-	shallow = true
-[submodule "tools/pyfiscan"]
-	path = tools/pyfiscan
-	url = https://github.com/fgeek/pyfiscan.git
 	shallow = true
 [submodule "tools/Probable-Wordlists"]
 	path = tools/Probable-Wordlists
@@ -62,4 +58,8 @@
 [submodule "tools/SecLists"]
 	path = tools/SecLists
 	url = https://github.com/danielmiessler/SecLists.git
+	shallow = true
+[submodule "tools/pyfiscan"]
+	path = tools/pyfiscan
+	url = https://github.com/fgeek/pyfiscan.git
 	shallow = true
