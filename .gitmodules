@@ -1,65 +1,75 @@
 [submodule "tools/executor"]
 	path = tools/executor
-	url = https://github.com/jdbivens42/Tools.git
+    url = https://github.com/jdbivens42/Tools.git
+    ignore = dirty
 [submodule "tools/peda"]
 	path = tools/peda
 	url = https://github.com/longld/peda.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/AutoBlue-MS17-010"]
 	path = tools/AutoBlue-MS17-010
 	url = https://github.com/3ndG4me/AutoBlue-MS17-010.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/progress"]
 	path = tools/progress
 	url = https://github.com/Xfennec/progress.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/lscript"]
 	path = tools/lscript
 	url = https://github.com/arismelachroinos/lscript.git
 	shallow = true
-[submodule "tools/old-lscript"]
-	path = tools/old-lscript
-    url = https://github.com/404NetworkError/lscript.git
-    branch = dev
-    shallow = true
+    ignore = dirty
 [submodule "tools/ssh-audit"]
 	path = tools/ssh-audit
 	url = https://github.com/jtesta/ssh-audit.git
 	branch = all_my_patches
+    ignore = dirty
 [submodule "tools/httpscreenshot"]
 	path = tools/httpscreenshot
 	url = https://github.com/breenmachine/httpscreenshot.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/Probable-Wordlists"]
 	path = tools/Probable-Wordlists
 	url = https://github.com/berzerk0/Probable-Wordlists.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/JAWS"]
 	path = tools/JAWS
 	url = https://github.com/411Hall/JAWS.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/LinEnum"]
 	path = tools/LinEnum
 	url = https://github.com/rebootuser/LinEnum.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/windows-privesc-check"]
 	path = tools/windows-privesc-check
 	url = https://github.com/pentestmonkey/windows-privesc-check.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/testssl.sh"]
 	path = tools/testssl.sh
     url = https://github.com/drwetter/testssl.sh.git
     branch = 2.9dev
 	shallow = true
+    ignore = dirty
 [submodule "tools/win_enum_local"]
 	path = tools/win_enum_local
 	url = https://github.com/sn0wfa11/win_enum_local.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/SecLists"]
 	path = tools/SecLists
 	url = https://github.com/danielmiessler/SecLists.git
 	shallow = true
+    ignore = dirty
 [submodule "tools/pyfiscan"]
 	path = tools/pyfiscan
 	url = https://github.com/fgeek/pyfiscan.git
 	shallow = true
+    ignore = dirty
