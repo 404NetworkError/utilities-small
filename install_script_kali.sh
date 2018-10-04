@@ -54,6 +54,7 @@ function confirm() {
     fi
 }
 
+DELETE="sudo rm -rf /var/lib/apt/lists/lock /var/cache/apt/archives/lock /var/lib/dpkg/lock"
 small=1
 
 ARGS=()
@@ -120,15 +121,16 @@ mkdir -p $ToolsDir
 cd $ToolsDir
 
 ## Install updates & upgrades
+`${DELETE}`
 echo -e "${PURPLE}--  INFO: Updating sytem  --${NC}"
 sudo apt-get update
-sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
+`${DELETE}`
 echo -e "${PURPLE}--  INFO: Installing apt-fast  --${NC}"
 sudo apt-get install -y curl aria2 git python3 python3-pip screen 
-sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
+`${DELETE}`
 #Install apt-fast
 /bin/bash -c "$(curl -sL https://git.io/vokNn)"
-sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
+`${DELETE}`
 sudo mkdir -p /var/cache/apt-fast /var/cache/apt/archives
 sudo sed -i "s|^#_APTMGR=apt-get|_APTMGR=apt|;s|^#DOWNLOADBEFORE=true|DOWNLOADBEFORE=true|;s|^#_MAXNUM=5|_MAXNUM=8|;s|^#DLLIST|DLLIST|;s|^#_DOWNLOADER|_DOWNLOADER|;s|--timeout=600 -m0|--timeout=600 -m0 --header \"Accept: \*/\*\"|;s|^#DLDIR.*|DLDIR=/var/cache/apt-fast|;s|^#APTCACHE|APTCACHE|" /etc/apt-fast.conf
 
@@ -165,7 +167,7 @@ screen -dmS symlinks bash -c "ln -sf $ToolsDir/${REPO}/bin ~/.local/; ln -sf $To
 if [[ "${distup}" -eq 1 ]]; then
     if [[ `confirm "Do you want to upgrade NOW? [y/N] This can be done later." | tr -d '\r' | tr -d '\n'` == "true" ]]; then
         sudo apt-get upgrade
-        sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
+        `${DELETE}`
         distup=0
     fi
 fi
@@ -178,17 +180,17 @@ sudo apt-fast install -y terminator openvas openvpn virtualenv masscan jq lftp f
                          dconf-editor python2 python-pip python2-dev libssl-dev libffi-dev build-essential openssl \
                          swig swig3.0 libssl-dev python2-dev libjpeg-dev xvfb phantomjs neovim tmux screen ncurses-dev \
                          libpython3-dev libyaml-dev metasploit-framework exploitdb apt-transport-https
-sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
+`${DELETE}`
 if [[ "${light}" -eq 1 ]]; then
     sudo DEBIAN_FRONTEND=noninteractive apt-fast install -y lightdm
     sudo dpkg-reconfigure -f noninteractive lightdm
 fi
 #sudo apt-fast install -y kali-linux-all
-#sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
+#`${DELETE}`
 if [[ "${i386}" -eq 1 ]]; then
     echo -e "${PURPLE}--  INFO: Add x32 Architecture  --${NC}"
     sudo dpkg --add-architecture i386 && sudo apt-fast update
-    sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
+    `${DELETE}`
 fi
 
 if [[ "${subl}" -eq 1 ]]; then
@@ -296,7 +298,7 @@ screen -dmS peda bash -c "echo 'source $ToolsDir/${REPO}/tools/peda/peda.py' >> 
 if [[ "${distup}" -eq 1 ]]; then
     echo -e "${PURPLE}--  INFO: Upgrading System  --${NC}"
     sudo apt-fast -y upgrade
-    sudo rm -rf /var/cache/apt/archives/lock /var/lib/dpkg/lock
+    `${DELETE}`
 fi
 
 
