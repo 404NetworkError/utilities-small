@@ -30,7 +30,7 @@ cd $ToolsDir
 
 if [ ! -d $ToolsDir/utilities ]; then
     cd $ToolsDir/utilities-small/dotfiles
-else if [ ! -d $ToolsDir/utilities-small ]; then
+elif [ ! -d $ToolsDir/utilities-small ]; then
     cd $ToolsDir/utilities/dotfiles
 fi
 cat aliases >> ~/.bash_aliases
