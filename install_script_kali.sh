@@ -66,10 +66,10 @@ case $key in
     -h|--help)
     echo -e "${BOLD}`basename "$0"`${NORM} [options]"
     echo -e "  ${BOLD}-l${NORM}    Large repository"
-    echo -e "  ${BOLD}-y${NORM}    If you want to ${BOLD}upgrade${NORM} as well as run the script"
+    echo -e "  ${BOLD}-u${NORM}    If you want to ${BOLD}upgrade${NORM} as well as run the script"
     echo -e "  ${BOLD}-v${NORM}    Setup OpenVAS"
-    echo -e "  ${BOLD}-l${NORM}    Install lightdm"
-    echo -e "  ${BOLD}-i${NORM}    Add i386 arch (aka 32-bit)"
+    echo -e "  ${BOLD}-ldm${NORM}  Install lightdm"
+    echo -e "  ${BOLD}-32${NORM}   Add i386 arch (aka 32-bit)"
     echo -e "  ${BOLD}-sub${NORM}  Install Sublime Text & Sublime Merge"
     exit
     shift # past argument
@@ -85,7 +85,7 @@ case $key in
     shift # past argument
     ;;
 
-    -l|--light|--lightdm)
+    -ldm|--light|--lightdm)
     light=1
     shift # past argument
     ;;
