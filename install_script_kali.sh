@@ -141,7 +141,7 @@ screen -dmS CPAN bash -c "yes | cpan install File::Spec File::Path XML::Simple W
 echo -e "${PURPLE}--  INFO: Installing Pip for Python 3 in the background  --${NC}"
 screen -dmS p3 bash -c "python3 -m pip install --upgrade pip setuptools wheel; python3 -m pip install --upgrade psutil"
 # Make local directories for local builds
-mkdir -p ~/.local
+mkdir -p ~/.local/bin
 ln -sf ~/.local ~/local
 ## Get everything
 echo -e "${PURPLE}--  INFO: Install all GitHub packages  --${NC}"
@@ -156,10 +156,10 @@ fi
 screen -dmS keycs bash -c "python3 $ToolsDir/${REPO}/bin/set_customshortcut.py 'System Monitor' 'gnome-system-monitor' '<Control><Shift>Escape'"
 # Fix executor permissions
 chmod -R 700 $ToolsDir/${REPO}/tools/executor/*
-chmod -R 400 $ToolsDir/${REPO}/tools/executor/*
+chmod -R 400 $ToolsDir/${REPO}/tools/executor/ini/*
 # Symlinks
-screen -dmS symlinks bash -c "ln -sf $ToolsDir/${REPO}/bin ~/.local/; ln -sf $ToolsDir/${REPO}/scripts/* ~/.local/bin/; ln -sf $ToolsDir/${REPO}/tools/executor $ToolsDir/; (IFS='
-'; for folder in `ls $ToolsDir/${REPO}/tools/`; do ln -sf $ToolsDir/${REPO}/tools/${folder}/* ~/.local/bin/; done); ln -sf $ToolsDir/${REPO}/tools/SecLists /usr/share/wordlists/; (cd /usr/share/wordlists/; ln -sf SecLists seclists; cd $ToolsDir); ln -sf $ToolsDir/${REPO}/tools/Probable-Wordlists /usr/share/wordlists/; (cd /usr/share/wordlists/; ln -sf Probable-Wordlists probable-wordlists; ln -sf probable-wordlists probable; cd $ToolsDir)"
+ln -sf $ToolsDir/${REPO}/bin/* /usr/local/bin/; ln -sf $ToolsDir/${REPO}/scripts/* /usr/local/bin/; ln -sf $ToolsDir/${REPO}/tools/executor $ToolsDir/; (IFS='
+'; for folder in `ls $ToolsDir/${REPO}/tools/`; do ln -sf $ToolsDir/${REPO}/tools/${folder}/* /usr/local/bin/; done); ln -sf $ToolsDir/${REPO}/tools/SecLists /usr/share/wordlists/; (cd /usr/share/wordlists/; ln -sf SecLists seclists; cd $ToolsDir); ln -sf $ToolsDir/${REPO}/tools/Probable-Wordlists /usr/share/wordlists/; (cd /usr/share/wordlists/; ln -sf Probable-Wordlists probable-wordlists; ln -sf probable-wordlists probable; cd $ToolsDir)
 
 
 
@@ -176,22 +176,24 @@ fi
 
 # Programs to download
 echo -e "${PURPLE}--  INFO: Installing all the programs  --${NC}"
+`${DELETE}`
 sudo apt-fast install -y terminator openvas openvpn virtualenv masscan jq lftp ftp htop p7zip-full pigz pbzip2 pixz \
                          dconf-editor python2 python-pip python2-dev libssl-dev libffi-dev build-essential openssl \
                          swig swig3.0 libssl-dev python2-dev libjpeg-dev xvfb phantomjs neovim tmux screen ncurses-dev \
-                         libpython3-dev libyaml-dev metasploit-framework exploitdb apt-transport-https
+                         libpython3-dev libyaml-dev metasploit-framework exploitdb apt-transport-https ncdu
 `${DELETE}`
 if [[ "${light}" -eq 1 ]]; then
     sudo DEBIAN_FRONTEND=noninteractive apt-fast install -y lightdm
     sudo dpkg-reconfigure -f noninteractive lightdm
 fi
+`${DELETE}`
 #sudo apt-fast install -y kali-linux-all
 #`${DELETE}`
 if [[ "${i386}" -eq 1 ]]; then
     echo -e "${PURPLE}--  INFO: Add x32 Architecture  --${NC}"
     sudo dpkg --add-architecture i386 && sudo apt-fast update
-    `${DELETE}`
 fi
+`${DELETE}`
 
 if [[ "${subl}" -eq 1 ]]; then
     # Other useful GUI tools
