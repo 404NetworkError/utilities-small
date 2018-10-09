@@ -73,3 +73,13 @@
 	url = https://github.com/fgeek/pyfiscan.git
 	shallow = true
     ignore = dirty
+[submodule "tools/nishang"]
+	path = tools/nishang
+    url = https://github.com/samratashok/nishang.git
+    shallow = true
+    ignore = dirty
+[submodule "tools/ADAPE-Script"]
+	path = tools/ADAPE-Script
+	url = https://github.com/hausec/ADAPE-Script.git
+    shallow = true
+    ignore = dirty
