@@ -67,6 +67,7 @@ case $key in
     echo -e "${BOLD}`basename "$0"`${NORM} [options]"
     echo -e "  ${BOLD}-l${NORM}    Large repository"
     echo -e "  ${BOLD}-u${NORM}    If you want to ${BOLD}upgrade${NORM} as well as run the script"
+    echo -e "  ${BOLD}-p${NORM}    Install powershell"
     echo -e "  ${BOLD}-v${NORM}    Setup OpenVAS"
     echo -e "  ${BOLD}-ldm${NORM}  Install lightdm"
     echo -e "  ${BOLD}-32${NORM}   Add i386 arch (aka 32-bit)"
@@ -104,10 +105,22 @@ case $key in
     vas=1
     shift # past argument
     ;;
+
+    -p|--power|--powershell|--pwsh)
+    ps=1
+    shift # past argument
+    ;;
 esac
 done
 set -- "${ARGS[@]}" # restore positional parameters
 
+
+
+wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add
+if [[ "${ps}" -eq 1 ]]; then
+	wget -q -O - https://packages.microsoft.com/keys/microsoft.asc | apt-key add
+	sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-bionic-prod bionic main" > /etc/apt/sources.list.d/microsoft.list'
+fi
 
 
 mkdir -p ~/.local/bin
@@ -126,7 +139,7 @@ echo -e "${PURPLE}--  INFO: Updating sytem  --${NC}"
 sudo apt-get update
 `${DELETE}`
 echo -e "${PURPLE}--  INFO: Installing apt-fast  --${NC}"
-sudo apt-get install -y curl aria2 git python3 python3-pip screen 
+sudo apt-get install -y curl aria2 git python3 python3-pip screen tmux apt-transport-https
 `${DELETE}`
 #Install apt-fast
 /bin/bash -c "$(curl -sL https://git.io/vokNn)"
@@ -180,11 +193,15 @@ echo -e "${PURPLE}--  INFO: Installing all the programs  --${NC}"
 sudo apt-fast install -y terminator openvas openvpn virtualenv masscan jq lftp ftp htop p7zip-full pigz pbzip2 pixz \
                          dconf-editor python2 python-pip python2-dev libssl-dev libffi-dev build-essential openssl \
                          swig swig3.0 libssl-dev python2-dev libjpeg-dev xvfb phantomjs neovim tmux screen ncurses-dev \
-                         libpython3-dev libyaml-dev metasploit-framework exploitdb apt-transport-https ncdu
+                         libpython3-dev libyaml-dev metasploit-framework exploitdb ncdu
 `${DELETE}`
 if [[ "${light}" -eq 1 ]]; then
     sudo DEBIAN_FRONTEND=noninteractive apt-fast install -y lightdm
     sudo dpkg-reconfigure -f noninteractive lightdm
+fi
+`${DELETE}`
+if [[ "${ps}" -eq 1 ]]; then
+	sudo apt-fast install -y powershell
 fi
 `${DELETE}`
 #sudo apt-fast install -y kali-linux-all
