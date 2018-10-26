@@ -83,3 +83,8 @@
 	url = https://github.com/hausec/ADAPE-Script.git
     shallow = true
     ignore = dirty
+[submodule "tools/password-audit"]
+	path = tools/password-audit
+	url = https://github.com/ktneely/password-audit.git
+    shallow = true
+    ignore = dirty
