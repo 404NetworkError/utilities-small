@@ -88,3 +88,8 @@
 	url = https://github.com/ktneely/password-audit.git
     shallow = true
     ignore = dirty
+[submodule "tools/big-list-of-naughty-strings"]
+	path = tools/big-list-of-naughty-strings
+	url = https://github.com/minimaxir/big-list-of-naughty-strings.git
+    shallow = true
+    ignore = dirty
