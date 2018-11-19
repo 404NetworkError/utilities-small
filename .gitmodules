@@ -93,3 +93,13 @@
 	url = https://github.com/minimaxir/big-list-of-naughty-strings.git
     shallow = true
     ignore = dirty
+[submodule "tools/Red-Teaming-Toolkit"]
+	path = tools/Red-Teaming-Toolkit
+	url = https://github.com/infosecn1nja/Red-Teaming-Toolkit.git
+    shallow = true
+    ignore = dirty
+[submodule "tools/AD-Attack-Defense"]
+	path = tools/AD-Attack-Defense
+	url = https://github.com/infosecn1nja/AD-Attack-Defense.git
+    shallow = true
+    ignore = dirty
