@@ -25,7 +25,6 @@
 [submodule "tools/ssh-audit"]
 	path = tools/ssh-audit
 	url = https://github.com/jtesta/ssh-audit.git
-	branch = all_my_patches
     ignore = dirty
 [submodule "tools/httpscreenshot"]
 	path = tools/httpscreenshot
@@ -55,7 +54,7 @@
 [submodule "tools/testssl.sh"]
 	path = tools/testssl.sh
     url = https://github.com/drwetter/testssl.sh.git
-    branch = 2.9dev
+    branch = 3.0
 	shallow = true
     ignore = dirty
 [submodule "tools/win_enum_local"]
